@@ -4,7 +4,7 @@
 
 
 <div class="container">
-    <form action="/p" enctype="multipart/form-data" method="post">
+    <form action="{{route('guardar-post')}}" enctype="multipart/form-data" method="post">
     {{ csrf_field() }}
     <div class="row">
         <div class="col-8 offset-2">
@@ -35,7 +35,7 @@
                 <input type="file", class="form-control-file" id="image" name="image">
 
                 @if ($errors->has('image'))
-                            <strong>{{ $errors->first('image') }}</strong>
+                            <strong class="text-danger">{{ $errors->first('image') }}</strong>
                 @endif
             </div>
 
