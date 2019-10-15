@@ -17,9 +17,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/email', function () {
+    return new NewUserWelcomeMail();
+});
+
+Route::post('follow/{user}', 'FollowsController@store');
+
+
 Route::get('post/create', 'PostsController@create')->name('crear.post');
-Route::get('post/{post}', 'PostsController@show');
+Route::get('post/{post}', 'PostsController@show')->name('mostrar-post');
 Route::post('post/save', 'PostsController@store')->name('guardar-post');
+Route::get('/', 'PostsController@index');
 
 Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
 Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
